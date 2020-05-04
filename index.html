@@ -18,6 +18,10 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- link animation -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <!-- link Lightbox -->
+    <link rel="stylesheet" href="css/lightbox.css">
+    <!-- 載入Fontawesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
 <style>
@@ -32,15 +36,16 @@
         text-decoration: none;
     }
 
+
     /* 做標題跟頁面連結時滾動更滑順 */
     html {
         scroll-behavior: smooth;
     }
 
     /* 針對每一個大區塊作間隔 */
-    section {
-        margin-bottom: 50px;
-    }
+    /* section {
+        margin-bottom: 100px;
+    } */
 
     /*---------------------------------------------- Banner CSS--------------------------------------------------*/
 
@@ -55,19 +60,789 @@
 
     .banner {
         position: relative;
+        width: 100%;
         height: 100vh;
     }
 
-    .swiper-container {
-        width: 100%;
-        height: 100%;
+
+
+    /* --------------------相片輪播----------------------------- */
+    .carousel {
+        width: calc(100% - 290px);
+        height: 100vh;
+        background-color: rgb(255, 255, 255);
+
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        position: relative;
+
     }
 
-    .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
+    .slider {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        right: -2%;
+        opacity: 0;
+        transform: scale(1.1);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
 
+    @media(max-width: 1200px) {
+
+        .carousel,
+        .slider,
+        .banner {
+            height: 70vh;
+        }
+    }
+
+    @media(max-width: 576px) {
+
+        .carousel,
+        .slider,
+        .banner {
+            height: 50vh;
+        }
+    }
+
+    /* .slider img {
+        width: 100%;
+    } */
+
+
+    .ani_slide {
+        animation-name: slide;
+    }
+
+    /* 10% 0.4s */
+    @keyframes slide {
+        0% {
+            opacity: 0;
+        }
+
+        15% {
+            opacity: 1;
+        }
+
+        85% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            right: 2%;
+        }
+    }
+
+    /* 0+5-1=4s  就是下一張動畫的delay時間  第二張開始動畫持續時間改為6s 因為要扣掉上一張淡入吃掉的時間*/
+    .slider1 {
+        background-image: url(./img/banner01.jpg);
+        animation-duration: 5s;
+        animation-delay: 0;
+        animation-timing-function: linear;
+        /* animation-iteration-count: infinite; */
+    }
+
+    .slider2 {
+        background-image: url(./img/banner02.jpg);
+        animation-duration: 5s;
+        animation-delay: 5s;
+        animation-timing-function: linear;
+        /* animation-iteration-count: infinite; */
+    }
+
+    .slider3 {
+        background-image: url(./img/banner03.jpg);
+        animation-duration: 5s;
+        animation-delay: 10s;
+        animation-timing-function: linear;
+        /* animation-iteration-count: infinite; */
+    }
+
+    .slider4 {
+        background-image: url(./img/banner04.jpg);
+        animation-duration: 5s;
+        animation-delay: 15s;
+        animation-timing-function: linear;
+        /* animation-iteration-count: infinite; */
+    }
+
+    .slider5 {
+        background-image: url(./img/banner05.jpg);
+        animation-duration: 5s;
+        animation-delay: 20s;
+        animation-timing-function: linear;
+        /* animation-iteration-count: infinite; */
+    }
+
+    /* 0+5-0.6=4.4s  為下一張圖片delay的時間 */
+    .ani_text1 {
+        animation-name: text-slide1;
+    }
+
+    .ani_text2 {
+        animation-name: text-slide2;
+    }
+
+    .carousel .text1-1 {
+        position: absolute;
+        color: black;
+        font-size: 50px;
+        font-weight: 800;
+        top: 3%;
+        left: 25%;
+        opacity: 0;
+        animation-duration: 5s;
+        animation-delay: 0;
+        animation-timing-function: ease-in-out;
+    }
+
+    @keyframes text-slide1 {
+        0% {
+            opacity: 0;
+        }
+
+        15% {
+            opacity: 1;
+            left: 10%;
+        }
+
+        85% {
+            opacity: 1;
+            left: 10%;
+        }
+
+        100% {
+            opacity: 0;
+            left: -5%;
+        }
+    }
+
+    h4 {
+        font-size: unset;
+        font-weight: unset;
+    }
+
+    .carousel .text1-2 {
+        position: absolute;
+        color: rgb(255, 255, 255);
+        font-size: 50px;
+        font-weight: 700;
+        bottom: 3%;
+        right: -10%;
+        opacity: 0;
+
+        animation-duration: 5s;
+        animation-delay: 0s;
+        animation-timing-function: ease-in-out;
+        z-index: 2;
+    }
+
+    @keyframes text-slide2 {
+        0% {
+            opacity: 0;
+        }
+
+        15% {
+            opacity: 1;
+            right: 5%;
+        }
+
+        85% {
+            opacity: 1;
+            right: 5%;
+        }
+
+        100% {
+            opacity: 0;
+            right: 20%;
+        }
+    }
+
+    .carousel .text2 {
+        position: absolute;
+        color: rgb(255, 255, 255);
+        font-size: 50px;
+        font-weight: 700;
+        top: 3%;
+        left: 25%;
+        opacity: 0;
+        animation-duration: 5s;
+        animation-delay: 5s;
+        animation-timing-function: ease-in-out;
+        z-index: 2;
+    }
+
+    .carousel .text3 {
+        position: absolute;
+        color: rgb(255, 255, 255);
+        font-size: 50px;
+        font-weight: 700;
+        top: 3%;
+        left: 25%;
+        opacity: 0;
+        animation-duration: 5s;
+        animation-delay: 10s;
+        animation-timing-function: ease-in-out;
+        z-index: 2;
+    }
+
+    .carousel .text4 {
+        position: absolute;
+        color: rgb(255, 255, 255);
+        font-size: 50px;
+        font-weight: 700;
+        top: 3%;
+        left: 25%;
+        opacity: 0;
+        animation-duration: 5s;
+        animation-delay: 15s;
+        animation-timing-function: ease-in-out;
+        z-index: 2;
+    }
+
+    .carousel .text5 {
+        position: absolute;
+        color: rgb(255, 255, 255);
+        bottom: 3%;
+        right: -10%;
+        opacity: 0;
+        animation-duration: 5s;
+        animation-delay: 20s;
+        animation-timing-function: ease-in-out;
+        z-index: 2;
+    }
+
+    .carousel .text5 h4 {
+        font-size: 50px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .carousel .text5 p {
+        font-size: 20px;
+        margin: 0;
+        padding: 0;
+        letter-spacing: 1.3px;
+    }
+
+@media(max-width: 992px){
+    .carousel .text1-1 ,.carousel .text1-2,  .carousel .text2 ,.carousel .text2,.carousel .text3,.carousel .text4,.carousel .text5 h4{
+        font-size: 40px;
+    }
+    .carousel .text5 p{
+        font-size: 15px;
+    }
+}
+@media(max-width: 576px){
+    .carousel .text1-1 ,.carousel .text1-2, .carousel .text2 ,.carousel .text2,.carousel .text3,.carousel .text4,.carousel .text5 h4{
+        font-size: 30px;
+    }
+    .carousel .text5 p{
+        font-size: 14px;
+        letter-spacing: unset;
+    }
+}
+    /* -----------------------------------NAV CSS------------------------------------- */
+    .nav-side {
+        width: 290px;
+        height: 100vh;
+        background-color: rgb(238, 238, 238);
+    }
+
+    .logo-side {
+        margin-top: 400px;
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+
+    }
+
+    .logo-side img {
+        width: 100%;
+    }
+
+    .logo-side:hover {
+        animation-name: shake;
+        animation-duration: 1s;
+        /* animation-iteration-count: infinite;  */
+
+    }
+
+    @keyframes shake {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        20% {
+            transform: rotate(10deg);
+        }
+
+        40% {
+            transform: rotate(-10deg);
+        }
+
+        60% {
+            transform: rotate(10deg);
+        }
+
+        60% {
+            transform: rotate(-10deg);
+        }
+
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+
+    .nav-area-content1 {
+        font-family: 'Noto Sans TC', sans-serif;
+        margin-top: 50px;
+        font-size: 20px;
+    }
+
+    .black-line {
+        width: 50PX;
+
+        border: 0;
+        height: 1px;
+        background: rgb(37, 37, 37);
+
+    }
+
+    .nav-area-content2 {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: 16px;
+        margin: 0px 0px 10px;
+    }
+
+    .nav-area-content1 a,
+    .nav-area-content2 a {
+        text-decoration: none;
+        color: rgb(37, 37, 37);
+        padding: 5px;
+    }
+
+    .nav-area-content1 a:hover {
+        transition: .3s;
+        color: red;
+        font-size: 21px;
+    }
+
+    .nav-area-content2 a:hover {
+        transition: .3s;
+        color: red;
+        font-size: 17px;
+    }
+
+    @media(max-width: 1200px) {
+        .nav-side {
+            display: none !important;
+        }
+
+        .carousel {
+            width: 100%;
+        }
+    }
+
+
+    /*---------------------------------------------- 第二個NAV  CSS--------------------------------------------------*/
+
+    .nav-2 {
+        background: #ffffff;
+        height: 80px;
+        width: 100%;
+        position: relative;
+        opacity: 1;
+        transition: .3s;
+        padding-top: 30px;
+    }
+
+    .logo-2 {
+        width: 80px;
+        height: 80px;
+        overflow: hidden;
+        margin-left: 50px;
+        opacity: 0;
+        transition: .5s;
+        display: inline-block;
+    }
+
+    .logo-2:hover {
+        transform: scale(1.1);
+        transition: .5s;
+    }
+
+    .logo-2 img {
+        width: 100%;
+    }
+
+    /*--- 漢堡條樣式--- */
+    .checkbtn {
+        float: right;
+        margin-right: 50px;
+        font-size: 50px;
+        cursor: pointer;
+        opacity: 0;
+
+    }
+
+    .checkbtn:hover {
+        transform: scale(1.1);
+        color: rgb(214, 90, 90);
+    }
+
+    .showNav {
+        opacity: 0.7 !important;
+        transition: 1s;
+    }
+
+    @media(max-width: 992px) {
+        .nav-2 {
+            padding-top: 0px;
+        }
+
+        .logo-2 {
+            width: 50px;
+            margin-top: 15px;
+        }
+
+        .checkbtn {
+            font-size: 35px;
+            margin-top: 15px;
+        }
+    }
+
+    /* ----------彈出的視窗----------- */
+    .overlay {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.9);
+        overflow-x: hidden;
+        transition: 0.5s;
+    }
+
+    .overlay .closebtn {
+        position: absolute;
+        top: 20px;
+        right: 45px;
+        font-size: 70px;
+        z-index: 20;
+
+    }
+
+    @media screen and (max-height: 450px) {
+        .overlay a {
+            font-size: 20px
+        }
+
+        .overlay .closebtn {
+            font-size: 40px;
+            top: 15px;
+            right: 35px;
+        }
+    }
+
+    /* -------彈出視窗裡的各物件------- */
+    .link-item {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .poster-row {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+    }
+
+    .poster {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        background-image: url(./img/poster.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .first-row {
+        padding-top: 100px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .first-row img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .second-row {
+        padding-top: 50px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .item2-wrap img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .second-row span {
+        color: #000;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .item3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .center-use {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .item3-wrap img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .item3 span {
+        color: #000;
+        font-size: 20px;
+
+    }
+
+    .last-row {
+        padding-top: 50px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .last-row span {
+        color: #000;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .member {
+        margin-top: 20px;
+    }
+
+    .left-link-group {
+        background-color: white;
+    }
+
+    /* 各連結hover效果 */
+    .left-link-group .row a:hover div {
+        transform: scale(1.1);
+        transition: .3s;
+    }
+
+    .left-link-group {
+        padding-top: 50px;
+    }
+
+    @media(max-width: 992px) {
+/* 992以下海報圖片隱藏 */
+        
+    }
+
+    @media(max-width: 1200px) {
+        .poster-row,
+        .poster {
+            display: none;
+        }
+        .left-link-group {
+            padding-bottom: 90px;
+        }
+
+        /* 所有圖案縮小 */
+        .first-row img,
+        .item2-wrap img,
+        .item3-wrap img {
+            width: 80px;
+            height: 80px;
+        }
+
+        /* 縮小top的間距 */
+        .first-row {
+            padding-top: 50px;
+        }
+    }
+
+    /*----------------------------------------------新聞卡片 CSS--------------------------------------------------*/
+    /* lg以上，顯示電腦版| lg以下，顯示手機版 */
+    .news-big-section {
+        display: block;
+        background: white;
+        padding-bottom: 80px;
+    }
+
+    .news-small-section {
+        display: none;
+    }
+
+    @media(max-width: 992px) {
+        .news-big-section {
+            display: none;
+        }
+
+        .news-small-section {
+            display: block;
+        }
+    }
+
+    /*-------------- 電腦版 ----------------*/
+    .row {
+        margin: 0;
+    }
+
+    .area1 {
+        overflow: hidden;
+    }
+
+    .news-title {
+        font-size: 40px;
+        padding: 50px 15px 0px;
+        letter-spacing: 3px;
+        font-weight: 800;
+        color: rgb(58, 58, 58);
+        opacity: 0;
+    }
+
+    .flyinClass {
+        animation-name: flyin;
+        animation-duration: 1s;
+        transition: linear;
+        opacity: 1;
+    }
+
+    @keyframes flyin {
+        0% {
+            opacity: 0;
+            transform: translateX(-200px);
+        }
+
+        95% {
+            opacity: 1;
+            transform: translateX(30px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+
+    .card-img-area1 {
+        width: 100%;
+    }
+
+    /* 讓卡片不要貼到最上面 */
+    .padding-block {
+        padding-top: 50px;
+        transition: .3s;
+    }
+
+    .padding-block:hover {
+        transform: scale(1.1);
+        transition: .3s;
+    }
+
+    .card-body .card-text h5 {
+        text-align: left;
+        font-size: 20px;
+        font-weight: 600;
+        color: cadetblue;
+        font-family: 'Noto Sans TC', sans-serif;
+    }
+
+    .card-body .card-text p {
+        font-size: 16px;
+        font-family: 'Noto Sans TC', sans-serif;
+    }
+
+    /* 第一跟第三張往下一點 */
+    /* .padding-block:nth-child(even) {
+        padding-top: 120px;
+    } */
+
+
+    /* read more */
+    .read-more-state {
+        display: none;
+    }
+
+    .read-more-wrap {
+        text-align: left;
+    }
+
+    .read-more-target {
+
+        opacity: 0;
+        max-height: 0;
+        font-size: 0;
+        transition: .25s ease;
+    }
+
+    .read-more-state:checked~.read-more-wrap .read-more-target {
+
+        opacity: 1;
+        font-size: inherit;
+        max-height: 999em;
+    }
+
+    .read-more-state~.read-more-trigger:before {
+        content: '更多';
+    }
+
+    .read-more-state:checked~.read-more-trigger:before {
+        content: '更少';
+    }
+
+    .read-more-trigger {
+        cursor: pointer;
+        background-color: rgb(85, 85, 85);
+        display: inline-block;
+        padding: 10px;
+        color: rgb(255, 255, 255);
+        font-size: 14px;
+        line-height: 10px;
+        border-radius: 5px;
+    }
+
+    /*---------------- 手機版------------------ */
+
+    .swiper-container-1 {
+        width: 100%;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .swiper-slide-1 {
+        overflow: hidden;
         /* Center slide text vertically */
         display: -webkit-box;
         display: -ms-flexbox;
@@ -83,426 +858,756 @@
         align-items: center;
     }
 
-    .nav-side {
-        width: 300px;
-        height: 100vh;
-        background-color: rgb(190, 190, 190);
+    .swiper-slide-1 img {
+        width: 80%;
+        /* max-height: 50%; */
     }
 
-    .logo-side {
-        width: 100px;
-        height: 100px;
-        background-color: rgb(83, 83, 83);
+    /*---------------------------------------------- 領養步驟 CSS--------------------------------------------------*/
 
-        font-size: 30px;
-        text-align: center;
-        line-height: 100px;
+    /* 背景漸層 */
+    .bg-1 {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: linear-gradient(-135deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        opacity: 0.3;
+        animation: gradient 15s ease infinite;
     }
 
-    .nav-area-content1 {
-        width: 280px;
-        height: 150px;
-        /* background-color: rgb(123, 213, 255); */
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
 
-        font-size: 20px;
-    }
+        50% {
+            background-position: 100% 50%;
+        }
 
-    .nav-area-content2 {
-        width: 280px;
-        height: 80px;
-        /* background-color: rgb(123, 213, 255); */
-
-        font-size: 20px;
-
-        margin: 40px 0px 60px 0px;
-    }
-
-    /* 右側NAV 縮到1200以下會隱藏 */
-    @media(max-width: 1200px) {
-        .nav-side {
-            display: none !important;
+        100% {
+            background-position: 0% 50%;
         }
     }
 
-    /*---------------------------------------------- 第二個NAV  CSS--------------------------------------------------*/
-
-    .nav-top {
-        width: 100%;
-        height: 80px;
-
-        position: sticky;
+    .step-big-section {
+        position: relative;
     }
 
-    .nav-top-background-color {
-        background-color: gray;
+
+    .area-pic {
+        overflow: hidden;
+    }
+
+    .area-pic img {
+        width: 100%;
+        height: auto;
+    }
+
+    .area-text {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: 18px;
+        padding: 300px 10px 10px;
+    }
+
+    .adjust {
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    @media(max-width: 992px) {
+        .adjust {
+            font-size: 25px;
+            font-weight: 600;
+        }
+
+        .area-text {
+            padding: 150px 10px 10px;
+        }
+    }
+
+    @media(max-width: 768px) {
+        .step-row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .area-text {
+            padding: 0;
+        }
+
+        .col-6 {
+            max-width: unset;
+        }
+
+        .reverse {
+            flex-direction: column-reverse;
+        }
+    }
+
+    /* -----------------行進路線 CSS----------- */
+
+    .path1 {
+        position: absolute;
+        top: 450px;
+        left: calc(50% - 450px);
+        overflow: hidden;
+        width: 900px;
+        opacity: 0;
+        transition: .5s;
+        z-index: 5;
+    }
+
+    .path2 {
+        position: absolute;
+        top: 1150px;
+        left: calc(50% - 450px);
+        overflow: hidden;
+        width: 900px;
+        opacity: 0;
+        transition: .5s;
+        z-index: 5;
+    }
+
+    .path3 {
+        position: absolute;
+        top: 1850px;
+        left: calc(50% - 450px);
+        overflow: hidden;
+        width: 900px;
+        opacity: 0;
+        transition: .5s;
+        z-index: 5;
+    }
+
+
+
+    .path-img {
+        width: 90%;
         opacity: 0.6;
-        width: calc(100% - 30px);
-        margin: auto;
     }
 
-    .logo-top {
-        width: 80px;
-        height: 80px;
-        background-color: rgb(83, 83, 83);
-
-        font-size: 20px;
-        text-align: center;
-        line-height: 80px;
-
-        margin-left: 50px;
-
-
+    .showPath {
+        opacity: 1;
     }
 
-    .menu {
-        width: 80px;
-        height: 80px;
-        background-image: url(./img/menu.png);
-        background-position: center;
-        background-size: cover;
+    /* 因應不同版型  路徑的大小及位置做調整 */
+    @media(max-width: 1200px) {
+        .path-img {
+            width: 80%;
+        }
 
+        .path1 {
+            width: 700px;
+            top: 2100px;
+            left: calc(50% - 300px);
+        }
+
+        .path2 {
+            width: 700px;
+            top: 2750px;
+            left: calc(50% - 300px);
+        }
+
+        .path3 {
+            width: 700px;
+            top: 3350px;
+            left: calc(50% - 300px);
+        }
+
+        .path4 {
+            width: 700px;
+            top: 3900px;
+            left: calc(50% - 250px);
+        }
     }
 
-    .menu-block {
-        padding-top: 4px;
-        margin-right: 50px;
+    @media(max-width: 992px) {
+        .path-img {
+            width: 70%;
+        }
+
+        .path1 {
+            width: 700px;
+            top: 2200px;
+            left: calc(50% - 300px);
+        }
+
+        .path2 {
+            width: 700px;
+            top: 2680px;
+            left: calc(50% - 300px);
+        }
+
+        .path3 {
+            width: 700px;
+            top: 3150px;
+            left: calc(50% - 300px);
+        }
+
+        .path4 {
+            width: 700px;
+            top: 3550px;
+            left: calc(50% - 250px);
+        }
     }
 
-  
+    @media(max-width: 992px) {
 
-    /*---------------------------------------------- 第一個區塊  CSS--------------------------------------------------*/
-    /* 讓每張卡片佔滿自己的col  沒設會爆版 */
-    .card-img-area1 {
-        width: 100%;
-    }
-
-    /* 控制4張卡片的高度 */
-
-    .pading-block {
-        padding-top: 50px;
-    }
-
-    .pading-block:nth-child(even) {
-        padding-top: 120px;
-
-    }
-
-    /*---------------------------------------------- 第二到五個區塊  CSS--------------------------------------------------*/
-
-    .area2 {
-        width: 100%;
-    }
-
-    .area2-pic {
-        width: 100%;
-        /* 到度到時記得拿掉 用內容撐 */
-        height: 100vh;
-        background-color: teal;
-    }
-
-    .area2-text {
-        width: 100%;
-        height: 100vh;
-        background-color: white;
-    }
-
-    .area2-text-block {
-        width: 80%;
-        height: 80%;
-        background-color: rgb(250, 143, 103);
+        .path-img,
+        .path1,
+        .path2,
+        .path3,
+        .path4 {
+            display: none;
+        }
     }
 
     /*---------------------------------------------- footer CSS--------------------------------------------------*/
-
-    .footer-block{
+    .background {
+        background-color: rgb(100, 100, 100);
         width: 100%;
-        height: 500px;
-        background-color: grey;
+        margin-left: 0;
+        margin-right: 0;
     }
 
-    .icon-group{
-        width: 100%;
-        height: 100%;
-        background-color: goldenrod;
+    .icon-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .icon{
-        width: 50px;
-        height: 50px;
-        background-color: white;
+    /* 包logo用 */
+    .box {
+        overflow: hidden;
+    }
 
+    .box img {
+        width: 50%;
+    }
+
+    .box:hover img {
+        animation: heart .3s linear;
+        transition: ease-in-out;
+        animation-iteration-count: infinite;
+    }
+
+    /* logo的動畫 */
+    @keyframes heart {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.2);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .open {
+        padding: 15px;
         text-align: center;
-        line-height: 50px;
-        font-size: 20px;
     }
-    .info{
+
+    .open-class {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .open h4 {
+        color: white;
+        font-size: 25px;
+        font-weight: 900;
+        letter-spacing: 5px;
+        padding: 10px;
+    }
+
+    .open span {
+        color: rgb(255, 255, 255);
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 3px;
+
+    }
+
+    .logo-position {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo-wrap {
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        transition: ease .3s;
+        margin-top: 10px;
+    }
+
+    .logo-wrap img {
         width: 100%;
-        height: 100%;
-        background-color: darkcyan;
     }
 
-    @media(max-width: 575px){
-        .footer-block{
-            height: unset;
-            display: flex;
-            flex-direction: column;
+    .logo-wrap:hover {
+        transform: scale(1.1);
+        transition: ease .3s;
+    }
+
+    .background .box {
+        text-align: center;
+    }
+
+    @media(max-width: 1200px) {
+        .open h4 {
+            font-size: 18px;
         }
-        .icon{
-            margin: auto;
-        }
-        .info{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+
+        .open span {
+            font-size: 16px;
         }
     }
 
+    @media(max-width: 768px) {
+        .background {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .open {
+            padding: 20px;
+        }
+
+        .logo-wrap {
+            margin-top: 30px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .box img {
+            max-width: 35%;
+            padding: 60px 0;
+        }
+    }
+
+    #copyright {
+        width: 100%;
+        background-color: rgb(148, 148, 148);
+        padding: 10px;
+        color: rgb(48, 48, 48);
+        text-align: center;
+        font-size: 16px;
+        font-weight: 800;
+    }
+
+    @media(max-width: 768px) {
+        #copyright {
+            font-size: 10px;
+        }
+    }
 </style>
 </head>
-
-
-
-
-
-
 
 <body>
 
     <!-- ----------------------------------------------------BANNER------------------------------------------------------------ -->
-    <div class=" banner d-flex">
+    <div class=" banner  d-flex">
         <!-- 左邊的  圖片輪播 -->
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">圖片 1</div>
-                <div class="swiper-slide">圖片 2</div>
-                <div class="swiper-slide">圖片 3</div>
+        <div class="carousel">
+            <div class="slider slider1 ani_slide">
+                <!-- 用img會造成圖片比例縮放，但是NAV高度卻沒跟著縮放的問題 -->
+                <!-- <img src="./img/banner01.jpg" alt=""> -->
             </div>
-            <!-- 導覽列 -->
-            <div class="swiper-pagination"></div>
-            <!-- 兩個箭頭 -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <div class="text1-1 ani_text1">
+                <h4> <span style="color: brown;">WHO</span> can help me...</h4>
+            </div>
+            <div class="text1-2 ani_text2">
+                <h4>Tai... you!</h4>
+            </div>
+
+            <div class="slider slider2 ani_slide">
+                <!-- <img src="./img/banner02.jpg" alt=""> -->
+            </div>
+            <div class="text2 ani_text1">
+                <h4>Fraternity</h4>
+            </div>
+
+            <div class="slider slider3 ani_slide">
+                <!-- <img src="./img/banner03.jpg" alt=""> -->
+            </div>
+            <div class="text3 ani_text1">
+                <h4>The truth of love</h4>
+            </div>
+
+            <div class="slider slider4 ani_slide">
+                <!-- <img src="./img/banner04.jpg" alt=""> -->
+            </div>
+            <div class="text4 ani_text1">
+                <h4>Decide</h4>
+            </div>
+
+            <div class="slider slider5 ani_slide">
+                <!-- <img src="./img/banner05.jpg" alt=""> -->
+            </div>
+            <div class="text5 ani_text2">
+                <h4>Inclusive</h4>
+                <p>Playing English is Dazzle</p>
+            </div>
         </div>
 
         <!-- 右邊的 NAV BAR -->
-        <nav class="nav-side d-flex flex-column justify-content-around align-items-center">
+        <nav class="nav-side d-md-flex flex-md-column  align-items-md-center">
 
             <a href="">
-                <div class="logo-side">LOGO</div>
+                <div class="logo-side">
+                    <img src="./img/logo-1.png" alt="">
+                </div>
             </a>
 
             <div class="nav-area ">
-
-                <div class="nav-area-content1 d-flex flex-column  align-items-center justify-content-around">
+                <div class="nav-area-content1 d-flex flex-md-column  align-items-md-center justify-content-md-around">
                     <a href=""> <span>領養步驟</span> </a>
                     <a href=""> <span>絕育計畫</span> </a>
                     <a href=""> <span>動保修法</span> </a>
                     <a href=""> <span>生命課程</span> </a>
                 </div>
-
-                <div class="nav-area-content2 d-flex flex-column align-items-center justify-content-around">
+                <!-- 黑線 -->
+                <hr class="black-line">
+                <div class="nav-area-content2 d-flex  flex-md-column  align-items-md-center justify-content-md-around">
                     <a href=""> <span>關於我們</span> </a>
                     <a href=""> <span>聯絡我們</span> </a>
                 </div>
-
             </div>
         </nav>
     </div>
 
     <!-- ----------------------------------------------------第二個NAV------------------------------------------------------------ -->
     <main>
+        <nav class="nav-2">
+            <!-- 漢堡條 -->
+            <span class="checkbtn" onclick="openNav()">&#9776;</span>
+            <!-- logo -->
+            <a href="">
+                <div class="logo logo-2">
+                    <img src="./img/logo-1.png" alt="">
+                </div>
+            </a>
+            <!-- 展開的視窗 -->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="row">
 
-        <div class="container">
-            <div class="row">
-                <div class="nav-top">
-                    <div class="nav-top-background-color   d-flex align-items-center">
-                        <div class="col-6">
+                    <!-- 左邊連結 -->
+                    <div class="col-12 col-xl-6 left-link-group">
+                        <!-- logo那排 -->
+                        <div class="row first-row">
                             <a href="">
-                                <div class="logo-top">LOGO</div>
+                                <div>
+                                    <img src="./img/logo-1.png" alt="">
+                                </div>
                             </a>
                         </div>
-                        <div class="col-6">
-                            <div class="menu-block d-flex justify-content-end">
-                                <a href="">
-                                    <div class="menu"></div>
+                        <!-- 領養步驟那排 -->
+                        <div class="row second-row">
+                            <div class="col-6 item3">
+                                <a class="center-use" href="">
+                                    <div class="item2-wrap">
+                                        <img src="./img/dog.png" alt="">
+                                    </div>
+                                    <span>領養步驟</span>
+                                </a>
+                            </div>
+                            <div class="col-6 item3">
+                                <a class="center-use" href="">
+                                    <div class="item3-wrap">
+                                        <img src="./img/donate-01.png" alt="">
+                                    </div>
+                                    <span>捐款方式</span>
                                 </a>
                             </div>
                         </div>
+                        <!-- 絕育計畫那排 -->
+                        <div class="row second-row">
+                            <div class="col-6 item3">
+                                <a class="center-use" href="">
+                                    <div class="item2-wrap">
+                                        <img src="./img/hurt-01.png" alt="">
+                                    </div>
+                                    <span>絕育計畫</span>
+                                </a>
+                            </div>
+                            <div class="col-6 item3">
+                                <a class="center-use" href="">
+                                    <div class="item3-wrap">
+                                        <img src="./img/item5.png" alt="">
+                                    </div>
+                                    <span>動保修法</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- 關於我們那排 -->
+                        <div class="row last-row">
+                            <a href="">
+                                <div><span>關於我們</span></div>
+                            </a>
+                            <a href="" class="member">
+                                <div><span>會員</span></div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--右邊海報 -->
+                    <div class="col-lg-6 poster-row">
+                        <div class="poster"></div>
                     </div>
                 </div>
             </div>
-        </div>
 
-
-        <!-- ----------------------------------------------------第一個區塊------------------------------------------------------------ -->
-
-        <section>
+        </nav>
+        <!-- ----------------------------------------------------新聞卡片----------------------------------------------------------- -->
+        <!-- 電腦版 -->
+        <section class="news-big-section">
             <div class="container">
+                <h4 class="news-title">NEWS</h4>
                 <div class="row">
-                    <div class="area1 d-md-flex justify-content-around">
+                    <div class="area1 d-flex">
                         <!-- 4張卡片 -->
-                        <div class="col-12 col-md-3 pading-block ">
-                            <div class="card ">
-                                <img class="card-img-area1" src="./img/bannerImg.jpg" alt="">
+                        <div class="col-3 padding-block">
+                            <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="0">
+                                <img class="card-img-area1" src="./img/news1.png" alt="">
                                 <div class="card-body">
                                     <div class="card-text text-center">
-                                        <h1>我是卡片</h1>
-                                        <p>我們式卡片的一大堆內容</p>
+                                        <h5>由衷的感謝！第一線的各位</h5>
+                                        <input type="checkbox" class="read-more-state" id="post-1" />
+                                        <p class="read-more-wrap ">
+                                            維持社會運轉的每一件事情，都有第一線人員有大家努力的堅守崗位，社會才能持續
+                                            <span
+                                                class="read-more-target">運行協會的絕育計畫之所以能幫助到更多犬貓除了夥伴的努力，更要感謝第一線志工朋友的付出。<br>感謝所有關心犬貓議題的各位!!<br>有您的支持，我們能做得更多！</span>
+                                        </p>
+                                        <label for="post-1" class="read-more-trigger "></label>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-12 col-md-3 pading-block">
-                            <div class="card">
-                                <img class="card-img-area1" src="./img/bannerImg.jpg" alt="">
+                        <div class="col-3 padding-block">
+                            <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                                <img class="card-img-area1" src="./img/news2.png" alt="">
                                 <div class="card-body">
                                     <div class="card-text text-center">
-                                        <h1>我是卡片</h1>
-                                        <p>我們式卡片的一大堆內容</p>
+                                        <h5>4/4 世界流浪動物日，呼朋引伴一起關心浪浪</h5>
+                                        <input type="checkbox" class="read-more-state" id="post-2" />
+                                        <p class="read-more-wrap ">
+                                            4月4日，人們愉悅地慶祝著這屬於人類小孩的節日。而街頭上的小狗小貓可能一出生<span
+                                                class="read-more-target">就面臨飢餓、寒冬酷暑、疾病、車禍、獸鋏等危難....
+                                                如果可以選擇，誰又想要流浪呢(´ﾟдﾟ`)因此希望藉由世界流浪動物日，讓大家能尊重流浪動物，並且重視流浪犬貓的問題！<br>目前台灣流浪犬貓數量過多，導致人與浪浪之間存在著衝突，甚至生活中處處充滿危險，卻沒有人可以保護牠們，因此台灣之心期盼透過「源頭絕育」，讓流浪命運不再上演
+                                                所以動動你的食指，向身邊的親友分享這個節日吧！<br>如果您認同我們的理念，歡迎大力支持我們!!</span>
+                                        </p>
+                                        <label for="post-2" class="read-more-trigger "></label>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-12 col-md-3 pading-block">
-                            <div class="card">
-                                <img class="card-img-area1" src="./img/bannerImg.jpg" alt="">
+                        <div class="col-3 padding-block">
+                            <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                                <img class="card-img-area1" src="./img/news3.png" alt="">
                                 <div class="card-body">
                                     <div class="card-text text-center">
-                                        <h1>我是卡片</h1>
-                                        <p>我們式卡片的一大堆內容</p>
+                                        <h5>寵物肥胖背後的真相</h5>
+                                        <input type="checkbox" class="read-more-state" id="post-3" />
+                                        <p class="read-more-wrap ">
+                                            不起眼的小黃狗和其它寵物都是如此可愛，再加上一點點額外的脂肪！滿分！<span
+                                                class="read-more-target">真是萌趣到想要狠狠的揉一把呢~
+                                                但是，這樣對它們真的好嗎？在世界各地，超重和肥胖的寵物都成為了一種日益增長的流行病。
+                                                <br>根據寵物肥胖預防協會（小編才知道美國還有這樣的協會=
+                                                =）的統計，2016年在美國的超重、肥胖的寵物比例，就高達54％（狗）和59％（貓）。
+                                                <br>真是驚人的數字！額外的重量對您的寵物的身體，健康和生命周期帶來問題。<br><br>飲食和運動對減輕體重和保持寵物健康很有幫助哦~你還知道什麼其它方法讓您的寵物保持健康？或者減肥小妙招嗎？歡迎分享給我們喔!</span>
+                                        </p>
+                                        <label for="post-3" class="read-more-trigger "></label>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-12 col-md-3 pading-block ">
-                            <div class="card">
-                                <img class="card-img-area1" src="./img/bannerImg.jpg" alt="">
+                        <div class="col-3 padding-block ">
+                            <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="900">
+                                <img class="card-img-area1" src="./img/news4.png" alt="">
                                 <div class="card-body">
                                     <div class="card-text text-center">
-                                        <h1>我是卡片</h1>
-                                        <p>我們式卡片的一大堆內容</p>
+                                        <h5>寵物也要老有所終</h5>
+                                        <input type="checkbox" class="read-more-state" id="post-4" />
+                                        <p class="read-more-wrap ">人都會老，寵物也是，台北市率全國之先，推動動物安養政策，目前
+                                            <span class="read-more-target">已經有四家機構取得市府認證，提供一個毛小孩開心養老，尊嚴善終的場所。<br><br>
+                                                調查也發現，有七成飼主在寵物年邁時，又無法提供照顧，願意付費將寵物安置在安養中心。<br>
+                                                北市動保處推廣動物安養政策，要讓毛小孩也能老有所終，深化民眾對動物福利的認知。
+                                                <br>包括提供獸醫診療機構，和特定寵物寄養業者等。 </span>
+                                        </p>
+                                        <label for="post-4" class="read-more-trigger "></label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ----------------------------------------------------第二個區塊------------------------------------------------------------ -->
+        <!-- 手機版 -->
+        <section class="news-small-section">
+            <!-- Swiper -->
+            <div class="swiper-container swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide swiper-slide-1">
+                        <img src="./img/news1.png" alt="">
+                    </div>
+                    <div class="swiper-slide swiper-slide-1">
+                        <img src="./img/news2.png" alt="">
+                    </div>
+                    <div class="swiper-slide swiper-slide-1">
+                        <img src="./img/news3.png" alt="">
+                    </div>
+                    <div class="swiper-slide swiper-slide-1">
+                        <img src="./img/news4.png" alt="">
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+        <!-- ----------------------------------------------------領養步驟------------------------------------------------------------ -->
+        <!----------------- 電腦版 -------------------->
+        <section class="step-big-section">
+            <!-- 背景圖片 -->
+            <div class="bg-1">
 
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="area2  d-md-flex ">
-                        <div class="col-12 col-md-8">
-                            <div class="area2-pic"></div>
+            </div>
+            <!------------行進路徑----------->
+            <div class="path1" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="500">
+                <img class="path-img" src="./img/path1.png" alt="">
+            </div>
+            <div class="path2" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="500">
+                <img class="path-img" src="./img/path2.png" alt="">
+            </div>
+            <div class="path3" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="500">
+                <img class="path-img" src="./img/path3.png" alt="">
+            </div>
+
+            <!-- 步驟一 -->
+            <div class="container step-container">
+                <div class="row step-row">
+                    <div class="col-6 col-md-8 area-pic" data-aos="zoom-in-up" data-aos-duration="2000">
+                        <img src="./img/step1.png" alt="">
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <div class="area-text " data-aos="zoom-in-down" data-aos-duration="2000">
+                            <p class="adjust">參加犬舍</p>
+                            
+                            <p>參訪犬舍，從候選狗卡中挑選入配的狗狗，與候選狗狗初次相遇。</p>
                         </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="area2-text d-flex justify-content-center align-items-center">
-                                <div class="area2-text-block"></div>
-                            </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 步驟二 -->
+            <div class="container step-container">
+                <div class="row step-row reverse">
+                    <div class="col-6 col-md-4">
+                        <div class="area-text" data-aos="zoom-in-down" data-aos-duration="2000">
+                            <p class="adjust">填寫申請書</p>
+                           
+                            <p>詢問櫃檯服務人員，並填寫認養申請書。</p>
                         </div>
+                    </div>
+                    <div class="col-6 col-md-8 area-pic" data-aos="zoom-in-up" data-aos-duration="2000">
+                        <img src="./img/step2.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- 步驟三 -->
+            <div class="container step-container">
+                <div class="row step-row">
+                    <!-- 步驟一 -->
+                    <div class="col-6 col-md-8 area-pic" data-aos="zoom-in-up" data-aos-duration="2000">
+                        <img src="./img/step3.png" alt="">
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <div class="area-text" data-aos="zoom-in-down" data-aos-duration="2000">
+                            <p class="adjust">狗狗健康檢查</p>
+                        
+                            <p>獸醫師進行健康檢查，並實施晶片植入、狂犬病預防注射及辦理寵物登記。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <!-- 步驟四 -->
+            <div class="container step-container">
+                <div class="row step-row reverse">
+                    <div class="col-6 col-md-4" data-aos="zoom-in-up" data-aos-duration="2000">
+                        <div class="area-text" data-aos="zoom-in-down" data-aos-duration="2000">
+                            <p class="adjust">帶新朋友回家</p>
+                      
+                            <p>帶狗狗回家，戴上新項圈及牽繩，您現在就可以帶新朋友回家。</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-8 area-pic" data-aos="zoom-in-up" data-aos-duration="2000">
+                        <img src="./img/step4.png" alt="">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ----------------------------------------------------第三個區塊------------------------------------------------------------ -->
 
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="area2  d-md-flex flex-row-reverse ">
-                        <div class="col-12 col-md-8">
-                            <div class="area2-pic"></div>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="area2-text d-flex justify-content-center align-items-center">
-                                <div class="area2-text-block"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- ----------------------------------------------------第四個區塊------------------------------------------------------------ -->
 
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="area2  d-md-flex ">
-                        <div class="col-12 col-md-8">
-                            <div class="area2-pic"></div>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="area2-text d-flex justify-content-center align-items-center">
-                                <div class="area2-text-block"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- ----------------------------------------------------第五個區塊------------------------------------------------------------ -->
-
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="area2  d-md-flex flex-row-reverse ">
-                        <div class="col-12 col-md-8">
-                            <div class="area2-pic"></div>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="area2-text d-flex justify-content-center align-items-center">
-                                <div class="area2-text-block"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <!-- ----------------------------------------------------footer------------------------------------------------------------ -->
         <footer>
-            <div class="row">
-                <div class="footer-block d-sm-flex justify-content-around align-items-center">
-                    <div class="col-12 col-sm-3">
-                        <div class="icon-group d-flex justify-content-around">
-                            <div class="icon">icon</div>
-                            <div class="icon">icon</div>
-                            <div class="icon">icon</div>    
-                        </div>
+            <div class="row background">
+                <div class="col-12 col-md-4 icon-group">
+                    <div class="box">
+                        <a href=""><img src="./img/FB.png" alt=""></a>
                     </div>
-                    <div class="col-12 col-sm-3">
-                        <div class="info text-center d-">
-                            <p>qqqqqqqqqqqq</p>
-                            <p>qqqqqqqqqqqq</p>
-                            <p>qqqqqqqqqqqq</p>
-                            <p>qqqqqqqqqqqq</p>
-                        </div>
+                    <div class="box">
+                        <a href=""><img src="./img/LINE-1.png" alt=""></a>
                     </div>
-                    <div class="col-12 col-sm-3">
-                        <div class="info text-center">
-                            <p>sssssssssss</p>
-                            <p>sssssssssss</p>
-                            <p>sssssssssss</p>
-                            <p>sssssssssss</p>
-                        </div>
+                    <div class="box">
+                        <a href=""><img src="./img/blogger.png" alt=""></a>
+                    </div>
+                    <div class="box">
+                        <a href=""><img src="./img/twitter.png" alt=""></a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4 logo-position">
+                    <div class="logo-wrap">
+                        <a href="#"><img src="./img/logo-1-grey.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 open-class">
+                    <div class="open" data-aos="fade-down">
+                        <h4>聯絡我們</h4>
+                        <span>04-26261478</span>
+                        <br>
+                        <span>每週一至週五</span>
+                        <br>
+                        <span>9:00 - 17:00</span>
+                        <br>
+                        <span>（國定假日除外）</span>
+
                     </div>
                 </div>
             </div>
         </footer>
-
+        <footer id="copyright" style="position: relative;">
+            此網頁純練習及測試用，不做任何商業行為及正式上架，若有侵權疑慮請告知。
+        </footer>
 
     </main>
-
-
-
 
 
 
@@ -521,6 +1626,8 @@
         crossorigin="anonymous"></script>
     <!----------------------   AOS 掛載 ------------------------------------->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- --------------------Lightbox掛載  要用他自己的JQ---------------------------------- -->
+    <script src="js/lightbox-plus-jquery.js"></script>
 
 
 
@@ -529,24 +1636,219 @@
         AOS.init();
     </script>
 
-    <!-- Swiper 初始化-->
+<!-- Swiper 初始化-->
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        spaceBetween: 0,
+        effect: "fade",
+        speed: 2000,
+        centeredSlides: true,
+        slidesPerView: 1,
+        autoplay: {
+            // 每張照片的時間
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>
+
+
+
+    <!-- 相片輪播 script -->
     <script>
-        var swiper = new Swiper('.swiper-container', {
-            spaceBetween: 30,
-            centeredSlides: true,
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
+        var slider1 = document.querySelector('.slider1')
+        var slider2 = document.querySelector('.slider2')
+        var slider3 = document.querySelector('.slider3')
+        var slider4 = document.querySelector('.slider4')
+        var slider5 = document.querySelector('.slider5')
+
+        var text1_1 = document.querySelector('.text1-1')
+        var text1_2 = document.querySelector('.text1-2')
+        var text2 = document.querySelector('.text2')
+        var text3 = document.querySelector('.text3')
+        var text4 = document.querySelector('.text4')
+        var text5 = document.querySelector('.text5')
+
+        // 在動畫結束時呼叫此函式
+        slider1.addEventListener("animationend", function () {
+            // 快速移除animation-name再把它放回去，做到重置的效果
+            slider1.classList.remove('ani_slide')
+            setTimeout(function () {
+                setTimeout(function () {
+                    slider1.classList.add('ani_slide')
+                }, 1)
+            }, 20000)
         });
+
+        slider2.addEventListener("animationend", function () {
+            slider2.classList.remove('ani_slide')
+            setTimeout(function () {
+                setTimeout(function () {
+                    slider2.classList.add('ani_slide')
+                }, 1)
+            }, 15000)
+        });
+
+        slider3.addEventListener("animationend", function () {
+            slider3.classList.remove('ani_slide')
+            setTimeout(function () {
+                setTimeout(function () {
+                    slider3.classList.add('ani_slide')
+                }, 1)
+            }, 10000)
+        });
+
+        slider4.addEventListener("animationend", function () {
+            slider4.classList.remove('ani_slide')
+            setTimeout(function () {
+                setTimeout(function () {
+                    slider4.classList.add('ani_slide')
+                }, 1)
+            }, 5000)
+        });
+
+        slider5.addEventListener("animationend", function () {
+            slider5.classList.remove('ani_slide')
+            setTimeout(function () {
+                setTimeout(function () {
+                    slider5.classList.add('ani_slide')
+                }, 1)
+            }, 0)
+        });
+
+
+        text1_1.addEventListener("animationend", function () {
+            text1_1.classList.remove('ani_text1')
+            setTimeout(function () {
+                setTimeout(function () {
+                    text1_1.classList.add('ani_text1')
+                }, 1)
+            }, 20000)
+        });
+
+        text1_2.addEventListener("animationend", function () {
+            text1_2.classList.remove('ani_text2')
+            setTimeout(function () {
+                setTimeout(function () {
+                    text1_2.classList.add('ani_text2')
+                }, 1)
+            }, 20000)
+        });
+
+        text2.addEventListener("animationend", function () {
+            text2.classList.remove('ani_text1')
+            setTimeout(function () {
+                setTimeout(function () {
+                    text2.classList.add('ani_text1')
+                }, 1)
+            }, 15000)
+        });
+
+        text3.addEventListener("animationend", function () {
+            text3.classList.remove('ani_text1')
+            setTimeout(function () {
+                setTimeout(function () {
+                    text3.classList.add('ani_text1')
+                }, 1)
+            }, 10000)
+        });
+
+        text4.addEventListener("animationend", function () {
+            text4.classList.remove('ani_text1')
+            setTimeout(function () {
+                setTimeout(function () {
+                    text4.classList.add('ani_text1')
+                }, 1)
+            }, 5000)
+        });
+
+        text5.addEventListener("animationend", function () {
+            text5.classList.remove('ani_text2')
+            setTimeout(function () {
+                setTimeout(function () {
+                    text5.classList.add('ani_text2')
+                }, 1)
+            }, 0)
+        });
+
+    </script>
+
+
+    <!-- ----彈出視窗 ------>
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+    </script>
+
+
+
+    <!-- 第二個NAV + 行進路徑 script -->
+    <script>
+        var path_1 = document.querySelector('.path1')
+        var path_2 = document.querySelector('.path2')
+        var path_3 = document.querySelector('.path3')
+        var path_4 = document.querySelector('.path4')
+        var news = document.querySelector('.news-title ')
+
+        window.onscroll = function () {
+            var nav_2 = document.querySelector('.nav-2')
+            var nav_logo = document.querySelector('.logo-2')
+            var checkBtn = document.querySelector('.checkbtn')
+            var nowScrollTop_safari = document.body.scrollTop
+            var nowScrollTop_google = document.documentElement.scrollTop
+
+            // 新聞區的NEWS標題
+            if (nowScrollTop_safari > 600 || nowScrollTop_google > 600) {
+                news.classList.add('flyinClass')
+            }
+            // 第二個NAV顯示
+            if (nowScrollTop_safari > 150 || nowScrollTop_google > 150) {
+                nav_logo.classList.add('showNav')
+                checkBtn.classList.add('showNav')
+            } else {
+                nav_logo.classList.remove('showNav')
+                checkBtn.classList.remove('showNav')
+            }
+
+            // 4個路徑PNG顯示
+            if (nowScrollTop_safari > 1800 || nowScrollTop_google > 1800) {
+                path_1.classList.add('showPath')
+            }
+            else {
+                path_1.classList.remove('showPath')
+            }
+            if (nowScrollTop_safari > 2400 || nowScrollTop_google > 2400) {
+                path_2.classList.add('showPath')
+            }
+            else {
+                path_2.classList.remove('showPath')
+            }
+            if (nowScrollTop_safari > 3200 || nowScrollTop_google > 3200) {
+                path_3.classList.add('showPath')
+            }
+            else {
+                path_3.classList.remove('showPath')
+            }
+            if (nowScrollTop_safari > 3700 || nowScrollTop_google > 3700) {
+                path_4.classList.add('showPath')
+            }
+            else {
+                path_4.classList.remove('showPath')
+            }
+        }
     </script>
 
 </body>
